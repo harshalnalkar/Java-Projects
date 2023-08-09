@@ -1,0 +1,230 @@
+import java.util.Scanner ;
+
+class Instagram
+{
+	Scanner sc = new Scanner(System.in);
+	private String firstName ;
+	private String lastName ;
+	private String username ;
+	private String phoneNumber ;
+	private String email ;
+	private String password ;
+
+	public String getFirstName()
+	{
+		System.out.println("First Name: "+firstName);
+		return firstName ;
+	}
+
+	public String getLastName()
+	{
+		System.out.println("Last Name: "+lastName);
+		return lastName ;
+	}
+
+	public String getUsername()
+	{
+		System.out.println("Username ID : "+username);
+		return username ;
+	}
+
+	public String getPassword()
+	{
+		System.out.println("confirm phone number");
+		String phoneNumber = sc.next();
+		if (this.password == password)
+		{
+			System.out.println("your account password"+username);
+		}
+		System.out.println(password);
+		return password;
+	}
+
+	public void setPassword(String password)
+	{
+		if (this.email.equals(email))
+		{
+			System.out.println("enter new password");
+			String password1 = sc.next();
+			this.password = password1 ;
+			System.out.println("\nupdated password successfully.");
+		}
+		else if (this.phoneNumber == phoneNumber)
+		{
+			System.out.println("enter new password");
+			String password1 = sc.next();
+			this.password = password1 ;
+			System.out.println("\nupdated password successfully.");
+		}
+		else {
+			System.out.println("\nemail & phone number might be incorrected");
+		}
+	}
+
+	void checkUsername()
+	{
+		System.out.println("please confirm Phone Number");
+		String phoneNumber = sc.next();
+
+		if(this.phoneNumber.equals(phoneNumber))
+		{
+			System.out.println("please Confirm Email");
+			String email = sc.next();
+			if ( this.email.equals(email))
+			{
+				System.out.println("\nis it your username\n"+username);
+				//obj.signIn();
+			}
+			else {
+				System.out.println("email might be incorrected");
+			}
+			
+		}
+		else {
+			System.out.println("phone number might be incorrected");
+		}
+	}
+
+	void display() {
+		System.out.println("\n*************************");
+		System.out.println("        Instagram        ");
+		System.out.println("*************************");
+		System.out.println("username - "+username);
+		System.out.println(firstName+" "+lastName); 
+	}
+
+	void signIn()
+	{
+		System.out.println("enter username");
+		String username = sc.next();
+		System.out.println("enter password");
+		String password =sc.next();
+		if(this.username.equals(username) && this.password.equals(password))
+		{
+			display();
+		}
+		else {
+			System.out.println("username & password might be incorrect");
+		}
+	}
+
+	Instagram() {}
+	
+	Instagram(String firstName, String lastName, String phoneNumber, String email, String username, String password)
+	{
+		this.firstName = firstName ;
+		this.lastName = lastName ;
+		this.username = username ;
+		this.phoneNumber = phoneNumber ;
+		this.email = email ;
+		this.password = password ;
+	}
+}
+
+class InstaVersion1 extends Instagram
+{
+	private String AaCreate ;
+	private String Comments ;
+
+	public String getAaCreate()
+	{
+		return AaCreate ;
+	}
+
+	public void setAaCreate(String AaCreate)
+	{
+		this.AaCreate = AaCreate ;
+	}
+	InstaVersion1(String AaCreate, String Comments)
+	{
+		this.AaCreate = AaCreate ;
+		this.Comments = Comments ;
+	}
+
+}
+
+
+class InstagramDriver1
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		boolean login = true ;
+		Instagram obj = null ;
+		//InstaVersion1 obj1 = null ;
+
+		while(login)
+		{
+			System.out.println("\n*-----------------------------*");
+			System.out.println("         Instagram        ");
+			System.out.println("*-----------------------------*");
+			System.out.println("welcome to my instagram world.\n");
+			System.out.println("1. don't have an account? Sign up.");
+			System.out.println("2. aleardy have an account Sign in.");
+			System.out.println("3. fogot username");
+			System.out.println("4. forgot password");
+			System.out.println("5. Post & Story Text In Create Mode");
+			System.out.println("6. logout");
+			System.out.println("choose What Do You??");
+
+			int choice = sc.nextInt();
+			switch(choice)
+			{
+			case 1 : {
+				System.out.println("enter your First Name");
+				String firstName = sc.next();
+				System.out.println("enter your Last Name");
+				String lastName = sc.next();
+				System.out.println("enter Phone Number ");
+				String phoneNumber = sc.next();
+				System.out.println("enter Email ");
+				String email = sc.next();
+				System.out.println("create Username ");
+				String username = sc.next();
+				System.out.println("enter Password");
+				String password = sc.next();
+				obj = new Instagram(firstName, lastName, phoneNumber, email, username, password);
+				System.out.println("your instagram account created successfully");
+				obj.display();
+			} break ;
+
+			case 2 : {
+				obj.signIn();
+			} break ;
+
+			case 3 : {
+				obj.checkUsername();
+			} break ;
+
+			case 4 : {
+				System.out.println("1. email through\n2. phone number through");
+				int choose = sc.nextInt();
+
+				switch (choose)
+				{
+				case 1: {
+					System.out.println("confirm email");
+					String email = sc.next();
+					obj.setPassword(email);
+				}
+				case 2: {
+					System.out.println("confirm phone number");
+					String phoneNumber = sc.next();
+					obj.setPassword(phoneNumber);
+				}	
+				}
+				} break;
+			case 5: {
+				
+			}
+			case 6: {
+			//	login = false;
+				System.out.println("logout successfully");
+			}
+
+			}
+
+		} 
+	}
+}
