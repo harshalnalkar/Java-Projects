@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.employees_details.hibernate.EmployeeDTO"
+		table="employees_details" schema="sd_intern">
+
+		<id name="employeeID" column="employee_id" type="int">
+			<generator class="increment" />
+		</id>
+
+		<property name="employeeName" column="employee_name" type="string"/>
+        <property name="email" column="email" type="string"/>
+        <property name="contact" column="contact" type="long"/>
+        <property name="selfIdentity" column="self_identity" type="string"/>
+        <property name="address" column="address" type="string"/>
+	</class>
+</hibernate-mapping>
+
